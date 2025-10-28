@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Support Templates</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      height: 100vh;
+      flex-direction: column;
+    }
+    .container {
+      display: flex;
+      flex: 1;
+    }
+    .sidebar {
+      width: 280px;
+      background: #2c3e50;
+      color: white;
+      padding: 10px;
+      overflow-y: auto;
+    }
+    .sidebar h2 {
+      font-size: 18px;
+      margin-bottom: 10px;
+      color: #ecf0f1;
+    }
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+    .sidebar li {
+      padding: 8px;
+      cursor: pointer;
+      border-radius: 4px;
+      margin-left: 10px;
+    }
+    .sidebar li:hover {
+      background: #34495e;
+    }
+    .sidebar .section-title {
+      font-weight: bold;
+      margin-top: 15px;
+      margin-left: 0;
+      color: #f1c40f;
+    }
+    .content {
+      flex: 1;
+      padding: 20px;
+      background: #ecf0f1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .buttons {
+      margin-bottom: 10px;
+    }
+    .buttons button {
+      margin-right: 10px;
+      padding: 10px 18px;
+      border: none;
+      border-radius: 5px;
+      background: #3498db;
+      color: white;
+      cursor: pointer;
+    }
+    .buttons button:hover {
+      background: #2980b9;
+    }
+    .script-box {
+      flex: 1;
+      padding: 15px;
+      background: white;
+      border-radius: 8px;
+      overflow-y: auto;
+      font-size: 16px;
+      line-height: 1.5;
+      direction: auto;
+      text-align: left;
+    }
+    footer {
+      background: #2c3e50;
+      color: white;
+      text-align: center;
+      padding: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="sidebar">
+      <h2>Email Templates</h2>
+      <ul>
+        <li class="section-title">Wrong Item</li>
+        <li onclick="showScript('wrong_noid')">No Order ID</li>
+        <li onclick="showScript('wrong_comp')">Wrong Order (Compensation)</li>
+        <li onclick="showScript('wrong_proof')">Request Proof</li>
+        <li onclick="showScript('wrong_nophoto')">Did not provide photo</li>
+        <li onclick="showScript('wrong_red')">Risk customer / Red tag</li>
+        <li onclick="showScript('wrong_purple')">Risk customer / Purple tag</li>
+        <li onclick="showScript('wrong_refund')">Refund & Compensation</li>
+
+        <li class="section-title">Missing Items</li>
+        <li onclick="showScript('missing_noid')">No Order ID</li>
+        <li onclick="showScript('missing_proof')">Request Proof</li>
+        <li onclick="showScript('missing_redeliver')">Redeliver Script</li>
+        <li onclick="showScript('missing_red')">Risk customer / Red tag</li>
+        <li onclick="showScript('missing_purple')">Risk customer / Purple tag</li>
+        <li onclick="showScript('missing_refund')">Only Refund</li>
+
+        <li class="section-title">Didn’t Receive Order</li>
+        <li onclick="showScript('dno_notinperson')">Not in Person (within 150m)</li>
+        <li onclick="showScript('dno_missinginfo')">Send Missing info required</li>
+        <li onclick="showScript('dno_guide')">Guide customer to find food</li>
+        <li onclick="showScript('dno_refund_yes')">Refund provided → Goodbye</li>
+        <li onclick="showScript('dno_refund_no')">Refund declined</li>
+
+        <li class="section-title">Order Delay</li>
+        <li onclick="showScript('delay_completed')">Order Completed</li>
+        <li onclick="showScript('delay_ongoing')">Order Ongoing</li>
+
+        <li class="section-title">Food Notes Not Followed</li>
+        <li onclick="showScript('food_dish')">Dish Remark</li>
+        <li onclick="showScript('food_nonotes')">No notes added</li>
+        <li onclick="showScript('food_apologize')">Apologize and appease</li>
+
+        <li class="section-title">Urge Courier (Slow Delivery)</li>
+        <li onclick="showScript('courier_apology')">Apology Script</li>
+        <li onclick="showScript('courier_can')">Courier can deliver</li>
+        <li onclick="showScript('courier_cant')">Courier can’t deliver</li>
+        
+        <li class="section-title">Solution</li>
+        <li onclick="showScript('Solution_24')">For 24H without reply from CST</li>
+        <li onclick="showScript('Solution_S')">For resolution</li>
+      </ul>
+    </div>
+
+    <div class="content">
+      <div class="buttons">
+        <button onclick="toggleLang()">EN / AR</button>
+        <button onclick="copyText()">Copy</button>
+        <button onclick="copyEmail()">Copy Email</button>
+      </div>
+      <div id="scriptBox" class="script-box">
+        👈 Please select a template from the left menu.
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    © All Rights Reserved By Mohamed Hassan (Mido)
+  </footer>
+
+  <script>
+    const scripts = {
+      wrong_noid: {
+        en: `Dear Keeta Customer,
+
+Thank you for contacting Keeta Customer Service. We acknowledge your feedback regarding the incorrect item received and sincerely apologize for any inconvenience this may have caused.
+
+To effectively investigate this matter and provide you with the appropriate resolution, we kindly request that you provide us with the below details in order to expedite your request:
+
+- Order Number
+- Clear photograph of the receipt along with your food order
+
+Once we receive the above details, our team will be able to assist you further. We appreciate your cooperation in providing this necessary information. If these details are not provided, unfortunately we will not be able to assess the situation and provide additional support.
+
+Thank you for your understanding and continued support of Keeta, we value your business and are committed to ensuring your satisfaction.
+
+Sincerely,
+Keeta Customer Service Center`,
+        ar: `عزيزي عميل كيتا،
+
+نشكرك على تواصلك مع خدمة عملاء كيتا. نشكرك على ملاحظاتك بخصوص المنتج غير الصحيح الذي تلقيته، ونعتذر بشدة عن أي إزعاج قد يكون سببه ذلك.
+
+وللتحقق من هذا الأمر بفعالية وتقديم الحل المناسب لك، نرجو منك تزويدنا بالتفاصيل التالية لتسريع طلبك:
+
+- رقم الطلب
+- صورة واضحة للإيصال مع طلب الطعام
+
+بمجرد استلامنا للتفاصيل المذكورة أعلاه، سيتمكن فريقنا من مساعدتك بشكل أكبر. نقدّر تعاونك في تزويدنا بهذه المعلومات الضرورية. في حال عدم تزويدنا بهذه التفاصيل، للأسف لن نتمكن من تقييم الوضع وتقديم أي دعم إضافي لك.
+
+نشكرك على تفهمك ودعمك المستمر لكيتا، فنحن نقدّر تعاملك معنا ونلتزم بضمان رضاك.
+
+مع خالص التحيات،
+مركز خدمة عملاء كيتا`
+      },
+      wrong_comp: { en: `Dear Keeta Customer,
+
+We appreciate your feedback and apologize for any inconvenience this may have caused. 
+
+Upon verification of the details provided, we have initiated a full refund for your order – XXXX. Please give it XXX days sothat it could reflect in your account.
+
+Furthermore, in recognition of the error and as a demonstration of our commitment to your satisfaction, a voucher valued at XXXX  has been credited to your Keeta wallet for future use.
+
+Thank you for bringing this matter to our attention as your feedback is valuable to us as we continuously strive to improve our services. 
+
+Sincerely,
+
+Keeta Customer Service Center`, 
+ar: `عميل كيتا العزيز،
+
+نُقدّر ملاحظاتك ونعتذر عن أي إزعاج قد يكون سببه هذا الأمر.
+
+بعد التحقق من التفاصيل المُقدّمة، قمنا برد كامل مبلغ طلبك - XXXX. يُرجى منحه مهلة XXX يومًا حتى يظهر المبلغ في حسابك.
+
+وعن طريق الخطأ، وتأكيدًا على التزامنا برضاك، تم إضافة قسيمة بقيمة XXXX إلى محفظة كيتا الخاصة بك لاستخدامها لاحقًا.
+
+نشكرك على لفت انتباهنا إلى هذا الأمر، فملاحظاتك قيّمة بالنسبة لنا في سعينا المستمر لتحسين خدماتنا.
+
+مع خالص التحيات،
+
+مركز خدمة عملاء كيتا` },
+      wrong_proof: { en: ` Dear Keeta Customer, 
+
+Thank you for contacting Keeta Customer Service. We acknowledge your feedback regarding the incorrect item received and sincerely apologize for any inconvenience this may have caused. 
+
+To effectively investigate this matter and provide you with the appropriate resolution, we kindly request that you provide us with the following details to expedite your request: 
+
+- Order Number
+
+- A clear photograph of the receipt, along with your food order
+
+Once we receive the above details, our team will be able to assist you further. We appreciate your cooperation in providing this necessary information. If these details are not provided, unfortunately we will not be able to asses the situation and to provide you with additional support.
+
+Thank you for your understanding and continued support of Keeta. We value your business and are committed to ensuring your satisfaction.
+
+Sincerely, 
+
+Keeta Customer Service Center `, 
+ar: ` عزيزي عميل كيتا،
+
+نشكرك على تواصلك مع خدمة عملاء كيتا. نشكرك على ملاحظاتك بخصوص المنتج غير الصحيح الذي تلقيناه، ونعتذر بشدة عن أي إزعاج قد يكون سببه ذلك.
+
+وللتحقق من هذا الأمر بفعالية وتقديم الحل المناسب لك، نرجو منك تزويدنا بالتفاصيل التالية لتسريع طلبك:
+
+- رقم الطلب
+
+- صورة واضحة للإيصال، بالإضافة إلى طلب الطعام الخاص بك
+
+بمجرد استلامنا للتفاصيل المذكورة أعلاه، سيتمكن فريقنا من مساعدتك بشكل أكبر. نقدّر تعاونك في تزويدنا بهذه المعلومات الضرورية. في حال عدم تزويدنا بهذه التفاصيل، للأسف، لن نتمكن من تقييم الوضع وتقديم أي دعم إضافي لك.
+
+نشكرك على تفهمك ودعمك المستمر لكيتا. نحن نقدّر تعاملك معنا ونلتزم بضمان رضاك.
+
+مع خالص التحيات،
+
+مركز خدمة عملاء كيتا ` },
+      wrong_nophoto: { en: ` Dear Keeta Customer, 
+
+Thank you for your feedback. Unfortunately, without proof, we can't determine the details of the problem. In the future, we hope everyone will help us in any way possible to resolve the issue more effectively. Thank you!
+
+Thank you for your understanding and continued support of Keeta. We value your business and are committed to ensuring your satisfaction.
+
+Sincerely, 
+
+Keeta Customer Service Center `, 
+      ar: ` عزيزي عميل كيتا،
+
+شكرًا لملاحظاتك. للأسف، لا يمكننا تحديد تفاصيل المشكلة دون دليل. نأمل أن يساعدنا الجميع في المستقبل بأي طريقة ممكنة لحل المشكلة بشكل أكثر فعالية. شكرًا لك!
+
+شكرًا لتفهمك ودعمك المستمر لكيتا. نحن نقدّر تعاملك معنا ونلتزم بضمان رضاك.
+
+مع خالص التحيات،
+
+مركز خدمة عملاء كيتا ` },
+      wrong_red: { en: ` Dear Keeta Customer,
+
+We appreciate your feedback and apologize for any inconvenience this may have caused.
+
+As a gesture of goodwill and in recognition of the inconvenience caused, a voucher valued at XXXX  has been credited to your Keeta wallet for future use.
+
+Thank you for bringing this matter to our attention. Your feedback is important to us as we strive to continuously improve our services.
+
+
+Sincerely,
+Keeta Customer Service Center `, 
+      ar: `عميل كيتا العزيز،
+
+نُقدّر ملاحظاتك ونعتذر عن أي إزعاج قد يكون سببه هذا الأمر.
+
+كبادرة حسن نية وتقديرًا للإزعاج الذي سببته، تم إضافة قسيمة بقيمة XXXX إلى محفظة كيتا الخاصة بك لاستخدامها لاحقًا.
+
+نشكرك على لفت انتباهنا إلى هذا الأمر. ملاحظاتك تهمنا في سعينا الدائم لتحسين خدماتنا.
+
+مع خالص التحيات،
+مركز خدمة عملاء كيتا .` },
+      wrong_purple: { en: ` Dear Keeta Customer,
+
+We appreciate your feedback and sincerely apologize for any inconvenience this may have caused.
+
+Please rest assured that we take your concerns seriously. We will inform the merchant to ensure such issues are addressed promptly.
+
+Thank you for bringing this matter to our attention.
+
+Sincerely,
+Keeta Customer Service Center `, 
+      ar: ` عزيزي عميل كيتا،
+
+نُقدّر ملاحظاتك ونعتذر بصدق عن أي إزعاج قد يكون سببه هذا الأمر.
+
+نؤكد لك أننا نأخذ مخاوفك على محمل الجد. سنُبلغ التاجر لضمان معالجة هذه المشاكل في أسرع وقت.
+
+نشكرك على لفت انتباهنا إلى هذا الأمر.
+
+مع خالص التحيات،
+مركز خدمة عملاء كيتا ` },
+      wrong_refund: { en: ` Dear Keeta Customer,
+
+We appreciate your feedback and apologize forany inconvenience this may have caused. 
+
+Upon verification of the details provided, we have initiated a full refund for your order – XXXX. Please give it XXX days so that it could reflect in your account.
+
+Furthermore, in recognition of the error and as a demonstration of our commitment to your satisfaction, a voucher valued at XXXX has been credited to your Keeta wallet for future use.
+
+Thank you for bringing this matter to our attention as your feedback is valuable to us as we continuously strive to improve our services. 
+
+Sincerely,
+
+Keeta Customer Service Center `, 
+      ar: ` عميل كيتا العزيز،
+
+نشكر ملاحظاتك ونعتذر عن أي إزعاج قد يكون سببه هذا الأمر.
+
+بعد التحقق من التفاصيل المُقدمة، قمنا برد كامل مبلغ طلبك - XXXX. يُرجى الانتظار لمدة XXX يومًا حتى يظهر المبلغ في حسابك.
+
+وعن طريق الخطأ، وتأكيدًا على التزامنا برضاك، تم إضافة قسيمة بقيمة XXXX إلى محفظة كيتا الخاصة بك لاستخدامها لاحقًا.
+
+نشكرك على لفت انتباهنا إلى هذا الأمر، فملاحظاتك قيّمة بالنسبة لنا في سعينا المستمر لتحسين خدماتنا.
+
+مع خالص التحيات،
+
+مركز خدمة عملاء كيتا .` },
+      missing_noid: { en: `Dear Keeta Customer,
+
+Thank you for contacting Keeta Customer Service. We acknowledge your feedback regarding a missing item(s) from your recent order and sincerely apologize for any inconvenience this may have caused. 
+
+To effectively investigate this matter and ensure a prompt resolution, we kindly request that you provide the below details:
+
+- Order Number
+
+- Image of the invoice along with the food items
+
+- Image of all the items received along with this order
+
+This will help us to identify any discrepancy and enable us to assess the situation and take the necessary steps to assist you.
+
+Once we receive this information, our team will be able to thoroughly review your order and provide you with the best possible support.
+
+Thank you for your cooperation and continued support. 
+
+Sincerely,
+
+Keeta Customer Service Center`, 
+      ar: ` عزيزي عميل كيتا،
+
+نشكرك على تواصلك مع خدمة عملاء كيتا. نشكرك على ملاحظاتك بخصوص وجود منتج/منتجات مفقودة من طلبك الأخير، ونعتذر بشدة عن أي إزعاج قد يكون سببه ذلك.
+
+لإجراء تحقيق فعال في هذه المسألة وضمان حل سريع، نرجو منك تزويدنا بالتفاصيل التالية:
+
+- رقم الطلب
+
+- صورة الفاتورة مع المواد الغذائية
+
+- صورة جميع المنتجات المستلمة مع هذا الطلب
+
+سيساعدنا هذا في تحديد أي اختلاف، ويُمكّننا من تقييم الوضع واتخاذ الخطوات اللازمة لمساعدتك.
+
+بمجرد استلامنا لهذه المعلومات، سيتمكن فريقنا من مراجعة طلبك بدقة وتقديم أفضل دعم ممكن لك.
+
+شكرًا لتعاونك ودعمك المستمر.
+
+مع خالص التحيات،
+
+مركز خدمة عملاء كيتا...` },
+      missing_proof: { en: ` Dear Keeta Customer,
+
+Thank you for contacting Keeta Customer Service. We acknowledge your feedback regarding a missing item(s) from your recent order and sincerely apologize for any inconvenience this may have caused. 
+
+To effectively investigate this matter and ensure a prompt resolution, we kindly request that you provide the below details:
+
+- Order Number
+
+- Image of the invoice along with the food items
+
+- Image of all the items received along with this order
+
+This will help us to identify any discrepancies and enable us to assess the situation and take the necessary steps to assist you.
+
+Once we receive this information, our team will be able to thoroughly review your order and provide you with the best possible support.
+
+Thank you for your cooperation and continued support. 
+
+Sincerely,
+
+Keeta Customer Service Center `, 
+      ar: ` عزيزي عميل كيتا،
+
+نشكرك على تواصلك مع خدمة عملاء كيتا. نشكرك على ملاحظاتك بخصوص وجود منتج/منتجات مفقودة من طلبك الأخير، ونعتذر بشدة عن أي إزعاج قد يكون سببه ذلك.
+
+لإجراء تحقيق فعال في هذا الأمر وضمان حل سريع، نرجو منك تزويدنا بالتفاصيل التالية:
+
+- رقم الطلب
+
+- صورة الفاتورة مع المواد الغذائية
+
+- صورة جميع المنتجات المستلمة مع هذا الطلب
+
+سيساعدنا هذا في تحديد أي اختلافات، ويُمكّننا من تقييم الوضع واتخاذ الخطوات اللازمة لمساعدتك.
+
+بمجرد استلامنا لهذه المعلومات، سيتمكن فريقنا من مراجعة طلبك بدقة وتقديم أفضل دعم ممكن لك.
+
+شكرًا لتعاونك ودعمك المستمر.
+
+مع خالص التحيات،
+
+مركز خدمة عملاء كيتا .` },
+      missing_redeliver: { en: `Dear Keeta Customer,
+
+We appreciate your feedback and apologize for any inconvenience this may have caused.
+
+Upon verification of the details provided, we have contacted the courier, and the missing items from your order – XXXX – will be redelivered.Kindly wait patiently as the courier will reach out to you once on route.
+
+Thank you for bringing this matter to our attention. Your feedback is valuable to us as we continuously strive to improve our services.
+
+Sincerely,
+
+Keeta Customer Service Center  `, 
+      ar: ` عميل كيتا العزيز،
+
+نُقدّر ملاحظاتك ونعتذر عن أي إزعاج قد يكون سببه هذا الأمر.
+
+بعد التحقق من البيانات المُقدّمة، تواصلنا مع شركة الشحن، وسيتم إعادة توصيل المنتجات المفقودة من طلبك - XXXX -. يُرجى الانتظار بصبر، حيث سيتواصل معك شركة الشحن فور وصول طلبك.
+
+نشكرك على لفت انتباهنا إلى هذا الأمر. ملاحظاتك قيّمة بالنسبة لنا، ونسعى باستمرار لتحسين خدماتنا.
+
+مع خالص التحيات،
+
+مركز خدمة عملاء كيتا .` },
+      missing_red: { en: ` Dear Keeta Customer,
+
+We appreciate your feedback and apologize for any inconvenience this may have caused.
+
+As a gesture of goodwill and in recognition of the inconvenience caused, a voucher valued at XXXX has been credited to your Keeta wallet for future use.
+
+Thank you for bringing this matter to our attention. Your feedback is important to us as we strive to continuously improve our services.
+
+We would appreciate it if you could take a moment to rate our service. Wishing you a pleasant day ahead.
+
+Thank you for choosing Keeta.
+
+Sincerely,
+Keeta Customer Service Center `, 
+      ar: ` عزيزي عميل كيتا،
+
+نُقدّر ملاحظاتك ونعتذر عن أي إزعاج قد يكون سببه هذا الأمر.
+
+كبادرة حسن نية وتقديرًا للإزعاج الذي سببته، تم إضافة قسيمة بقيمة XXXX إلى محفظة كيتا الخاصة بك لاستخدامها لاحقًا.
+
+نشكرك على لفت انتباهنا إلى هذا الأمر. ملاحظاتك تهمنا في سعينا الدائم لتحسين خدماتنا.
+
+نُقدّر لو تفضلتَ بتقييم خدمتنا. نتمنى لك يومًا سعيدًا.
+
+شكرًا لاختيارك كيتا.
+
+مع خالص التحيات،
+مركز خدمة عملاء كيتا .` },
+      missing_purple: { en: `Dear Keeta Customer,
+
+We appreciate your feedback and sincerely apologize for any inconvenience this may have caused.
+
+Please rest assured that we take your concerns seriously. We will inform the merchant to ensure such issues are addressed promptly.
+
+Thank you for bringing this matter to our attention.
+
+Sincerely,
+Keeta Customer Service Center  `, 
+      ar: ` عزيزي عميل كيتا،
+
+نُقدّر ملاحظاتك ونعتذر بصدق عن أي إزعاج قد يكون سببه هذا الأمر.
+
+نؤكد لك أننا نأخذ مخاوفك على محمل الجد. سنُبلغ التاجر لضمان معالجة هذه المشاكل في أسرع وقت.
+
+نشكرك على لفت انتباهنا إلى هذا الأمر.
+
+مع خالص التحيات،
+مركز خدمة عملاء كيتا .` },
+      missing_refund: { en: ` Dear Keeta Customer,
+
+We appreciate your feedback and apologize for any inconvenience this may have caused. 
+
+Upon verification of the details provided, we have initiated a partial refund for your order– XXXX. Please give it XXX days so that it could reflect in your account.
+
+Furthermore, in recognition of the error and as a demonstration of our commitment to your satisfaction, a voucher valued at XXXX has been credited to your Keeta wallet for future use.
+
+Thank you for bringing this matter to our attention, as your feedback is valuable to us as we continuously strive to improve our services. 
+
+Sincerely,
+
+Keeta Customer Service Center `, 
+      ar: ` عميل كيتا العزيز،
+
+نُقدّر ملاحظاتك ونعتذر عن أي إزعاج قد يكون سببه هذا الأمر.
+
+بعد التحقق من التفاصيل المُقدّمة، قمنا برد جزء من مبلغ طلبك - XXXX. يُرجى الانتظار لمدة XXX يومًا حتى يظهر المبلغ في حسابك.
+
+وعن طريق الخطأ، وتأكيدًا على التزامنا برضاك، تم إضافة قسيمة بقيمة XXXX إلى محفظة كيتا الخاصة بك لاستخدامها لاحقًا.
+
+نشكرك على لفت انتباهنا إلى هذا الأمر، فملاحظاتك قيّمة بالنسبة لنا في سعينا المستمر لتحسين خدماتنا.
+
+مع خالص التحيات،
+
+مركز خدمة عملاء كيتا .` },
+      dno_notinperson: { en: `Dear Keeta Customer, 
+
+Thank you for choosing Keeta.
+
+We understand from your feedback that you did not receive your recent order, and we sincerely apologize for any inconvenience this may have caused.
+
+Our records indicate that the driver left your order at ..XXXXXXX. Could you please check this location to see if your order has been placed there?
+
+We appreciate you bringing this to our attention. Your feedback is valuable in helping us to ensure accurate deliveries.
+
+Thank you for your understanding and continued support of Keeta. We hope to continue serving you and trust that you will have a positive experience with your future orders.
+
+Sincerely,
+
+Keeta Customer Service Center`, 
+      ar: `عميل كيتا العزيز،
+
+شكرًا لاختيارك كيتا.
+
+نعلم من ملاحظاتك أنك لم تستلم طلبك الأخير، ونعتذر بصدق عن أي إزعاج قد يكون سببه هذا.
+
+تشير سجلاتنا إلى أن السائق ترك طلبك في ..XXXXXX. هل يمكنك التحقق من هذا الموقع لمعرفة ما إذا كان طلبك قد تم تقديمه هناك؟
+
+نشكرك على لفت انتباهنا إلى هذا الأمر. ملاحظاتك قيّمة وتساعدنا على ضمان دقة التوصيل.
+
+نشكرك على تفهمك ودعمك المستمر لكيتا. نأمل أن نستمر في خدمتك ونثق بأنك ستحظى بتجربة إيجابية مع طلباتك المستقبلية.
+
+مع خالص التحيات،
+
+مركز خدمة عملاء كيتا  ` },
+      dno_missinginfo: { en: `Dear Keeta Customer, 
+
+Thank you for choosing Keeta.
+
+We understand from your feedback that you did not receive your recent order, and we sincerely apologize for any inconvenience this may have caused.
+
+ Could you please provide us with the order number so we can make sure you are properly assisted? 
+
+We appreciate you bringing this to our attention.
+
+Thank you for your understanding and continued support of Keeta. We hope to continue serving you and trust that you will have a positive experience with your future orders.
+
+Thank you for contacting Keeta Customer Service. 
+
+Sincerely,
+
+Keeta Customer Service Center.`, 
+      ar: `عميل كيتا العزيز،
+
+شكرًا لاختيارك كيتا.
+
+نعلم من ملاحظاتك أنك لم تستلم طلبك الأخير، ونعتذر بشدة عن أي إزعاج قد يكون سببه ذلك.
+
+هل يمكنك تزويدنا برقم الطلب لنضمن حصولك على المساعدة اللازمة؟
+
+نقدر لفت انتباهنا إلى هذا الأمر.
+
+نشكرك على تفهمك ودعمك المستمر لكيتا. نأمل أن نستمر في خدمتك ونثق بأنك ستحظى بتجربة إيجابية مع طلباتك المستقبلية.
+
+شكرًا لتواصلك مع خدمة عملاء كيتا.
+
+مع خالص التحيات،
+
+مركز خدمة عملاء كيتا .` },
+      dno_guide: { en: `Dear Keeta Customer, 
+
+Thank you for choosing Keeta.
+
+We understand from your feedback that you did not receive your recent order, and we sincerely apologize for any inconvenience this may have caused.
+
+Our records indicate that the driver left your order at ..XXXXXXX. Could you please check this location to see if your order has been placed there?
+
+We appreciate you bringing this to our attention. Your feedback is valuable in helping us ensure accurate deliveries.
+
+Thank you for your understanding and continued support of Keeta. We hope to continue serving you and trust that you will have a positive experience with your future orders.
+
+Sincerely,
+
+Keeta Customer Service Center`, 
+      ar: `عميل كيتا العزيز،
+
+شكرًا لاختيارك كيتا.
+
+نعلم من ملاحظاتك أنك لم تستلم طلبك الأخير، ونعتذر بصدق عن أي إزعاج قد يكون سببه هذا.
+
+تشير سجلاتنا إلى أن السائق ترك طلبك في ..XXXXXX. هل يمكنك التحقق من هذا الموقع لمعرفة ما إذا كان طلبك قد تم تقديمه هناك؟
+
+نشكرك على لفت انتباهنا إلى هذا الأمر. ملاحظاتك قيّمة وتساعدنا على ضمان دقة التوصيل.
+
+نشكرك على تفهمك ودعمك المستمر لكيتا. نأمل أن نستمر في خدمتك ونثق بأنك ستحظى بتجربة إيجابية مع طلباتك المستقبلية.
+
+مع خالص التحيات،
+
+مركز خدمة عملاء كيتا  .` },
+      dno_refund_yes: { en: ` Dear Keeta Customer,
+
+We appreciate your feedback and apologize forany inconvenience this may have caused. 
+
+Upon verification of the details provided, we have initiated a full refund for your order – XXXX. Please give it XXX days so that it could reflect in your account.
+
+Furthermore, in recognition of the error and as a demonstration of our commitment to your satisfaction, a wallet valued at XXXX  has been credited to your Keeta wallet for future use.
+
+Thank you for bringing this matter to our attention as your feedback is valuable to us as we continuously strive to improve our services. 
+
+We would appreciate if you could take a moment to rate our service, wishing you a pleasant day ahead. 
+
+Thank you for choosing Keeta.
+
+Sincerely,
+
+Keeta Customer Service Center `, 
+      ar: ` عميل كيتا العزيز،
+
+نُقدّر ملاحظاتك ونعتذر عن أي إزعاج قد يكون سببه هذا الأمر.
+
+بعد التحقق من التفاصيل المُقدّمة، قمنا برد كامل مبلغ طلبك - XXXX. يُرجى الانتظار XXX يومًا حتى يظهر المبلغ في حسابك.
+
+وعن طريق الخطأ، وتأكيدًا على التزامنا برضاك، تم إضافة رصيد بقيمة XXXX إلى محفظة كيتا الخاصة بك لاستخدامه لاحقًا.
+
+نشكرك على لفت انتباهنا إلى هذا الأمر، فملاحظاتك قيّمة بالنسبة لنا في سعينا المستمر لتحسين خدماتنا.
+
+نُقدّر لو تفضلتَ بتقييم خدمتنا، ونتمنى لك يومًا سعيدًا.
+
+شكرًا لاختيارك كيتا.
+
+مع خالص التحيات،
+
+مركز خدمة عملاء كيتا ` },
+      dno_refund_no: { en: ` Dear Keeta Customer,
+
+We appreciate your feedback and apologize for any inconvenience this may have caused. 
+
+Currently we would not be able to assist you with your request due to ................XX
+
+However, we strive to improve our services and appreciate the time to reach out to us. 
+
+Its unfortunate that we were not able to help you this time.  
+
+Thank you for choosing Keeta.
+
+Sincerely,
+
+Keeta Customer Service Center `, 
+      ar: `عزيزي عميل كيتا،
+
+نُقدّر ملاحظاتك ونعتذر عن أي إزعاج قد يكون سببه ذلك.
+
+حاليًا، لن نتمكن من مساعدتك في طلبك بسبب ................XX
+
+مع ذلك، نسعى جاهدين لتحسين خدماتنا ونُقدّر وقتك للتواصل معنا.
+
+يؤسفنا أننا لم نتمكن من مساعدتك هذه المرة.
+
+شكرًا لاختيارك كيتا.
+
+مع خالص التحيات،
+
+مركز خدمة عملاء كيتا  .` },
+      delay_completed: { en: `Dear Keeta Customer,
+
+We absolutely understand your concern regarding the delay in the receiving your order, and we sincerely apologize for any inconvenience this has caused. 
+
+We also want to remind you that Keeta is committed to providing the best possible experience, which includes our on-time delivery guarantee. 
+
+To qualify for the on-time guarantee, the following two conditions must be met:
+
+The order must be completed; compensation is not provided for incomplete orders.
+
+The actual delivery time must exceed the estimated delivery time (ETA) by more than 15 minutes.
+
+Thank you again for your valuable feedback.
+
+We hope to continue serving you and trust that you will keep supporting Keeta.
+
+Sincerely,
+
+Keeta Customer Service Center`, 
+      ar: ` عميل كيتا العزيز،
+
+نتفهم تمامًا قلقكم بشأن تأخر استلام طلبكم، ونعتذر بشدة عن أي إزعاج قد يسببه ذلك.
+
+كما نود تذكيركم بأن كيتا ملتزمة بتقديم أفضل تجربة ممكنة، بما في ذلك ضمان التوصيل في الموعد المحدد.
+
+للحصول على ضمان التوصيل في الموعد المحدد، يجب استيفاء الشرطين التاليين:
+
+يجب إكمال الطلب؛ لا يُقدم تعويض عن الطلبات غير المكتملة.
+
+يجب أن يتجاوز وقت التوصيل الفعلي وقت التوصيل المتوقع بأكثر من 15 دقيقة.
+
+شكرًا جزيلاً لكم على ملاحظاتكم القيّمة.
+
+نأمل أن نستمر في خدمتكم ونثق بأنكم ستواصلون دعم كيتا.
+
+مع خالص التحيات،
+
+مركز خدمة عملاء كيتا ` },
+      delay_ongoing: { en: `Dear Keeta Customer,
+
+Thank you for choosing Keeta.
+
+We absolutely understand your concern regarding the delay in the delivery of your order, and we sincerely apologize for any inconvenience this is causing. Please know that we are actively addressing this situation.
+
+We have been in direct contact with the the courier, and we want to assure you that they are currently en-route to your location. We kindly request your continued patience as they complete the delivery. 
+
+We also want to remind you that Keeta is committed to providing the best possible experience, which includes our on-time delivery guarantee. 
+
+Compensation is provided for orders that meet the delay conditions.
+
+To qualify for the on-time guarantee, the following two conditions must be met:
+
+1.   The order must be completed; compensation is not provided for incomplete orders.
+
+2.   The actual delivery time must exceed the estimated delivery time (ETA) by more than 15 minutes.
+
+Thank you for your understanding as we work to get your order to you as quickly as possible. We truly appreciate your patience. 
+
+Sincerely, 
+
+Keeta Customer Service Center`, 
+      ar: ` عميل كيتا العزيز،
+
+شكرًا لاختيارك كيتا.
+
+نتفهم تمامًا قلقك بشأن تأخير توصيل طلبك، ونعتذر بصدق عن أي إزعاج قد يسببه ذلك. يرجى العلم أننا نعمل جاهدين على حل هذه المشكلة.
+
+لقد تواصلنا مباشرةً مع شركة الشحن، ونؤكد لكم أنها في طريقها إلى عنوانكم. نرجو منكم التحلي بالصبر أثناء إتمام عملية التوصيل.
+
+كما نذكركم بأن كيتا ملتزمة بتقديم أفضل تجربة ممكنة، بما في ذلك ضمان التوصيل في الموعد المحدد.
+
+يتم تقديم تعويض للطلبات التي تستوفي شروط التأخير.
+
+للحصول على ضمان التوصيل في الموعد المحدد، يجب استيفاء الشرطين التاليين:
+
+1. يجب إكمال الطلب؛ ولا يتم تقديم تعويض للطلبات غير المكتملة.
+
+2. يجب أن يتجاوز وقت التوصيل الفعلي وقت التوصيل المتوقع بأكثر من 15 دقيقة.
+
+نشكركم على تفهمكم، ونسعى جاهدين لتوصيل طلبكم إليكم في أسرع وقت ممكن. نقدر صبركم.
+
+مع خالص التحيات،
+
+مركز خدمة عملاء كيتا ` },
+      food_dish: { en: `Dear Keeta Customer,
+
+Thank you for choosing Keeta.
+
+We appreciate you bringing to our attention that the special instructions for your recent order were not followed. We sincerely apologize for any inconvenience caused. 
+
+We have forwarded your feedback to the relevant restaurant and emphasized the importance of adhering to customer requests so that it doesn’t have an impact on the experience. 
+
+We take such feedback seriously which helps us to identify areas of improvement and we look forward to providing you with a pleasant experience next time.
+
+Thank you for contacting Keeta Customer Service.
+
+Sincerely,
+
+Keeta Customer Service Center`, 
+      ar: ` عميل كيتا العزيز،
+
+شكرًا لاختيارك كيتا.
+
+نشكرك على لفت انتباهنا إلى عدم اتباع التعليمات الخاصة بطلبك الأخير. نعتذر بشدة عن أي إزعاج قد يكون سببه ذلك.
+
+لقد أرسلنا ملاحظاتك إلى المطعم المعني، وشددنا على أهمية الالتزام بطلبات العملاء حتى لا تؤثر على تجربتك.
+
+نأخذ هذه الملاحظات على محمل الجد، مما يساعدنا على تحديد جوانب التحسين، ونتطلع إلى تقديم تجربة ممتعة لك في المرة القادمة.
+
+شكرًا لتواصلك مع خدمة عملاء كيتا.
+
+مع خالص التحيات،
+
+مركز خدمة عملاء كيتا  ` },
+      food_nonotes: { en: ` Dear Keeta Customer,
+
+Thank you for your feedback, and we're truly sorry to hear about your experience.
+
+After reviewing your order details, we found that no special instructions or notes were added at the time the order was placed. As a result, the restaurant prepared the meal according to its standard process.
+
+We understand your concern and will still share your feedback with the restaurant for future improvement. We hope to serve you better in your next experience.
+
+Thank you for choosing Keeta.
+
+Sincerely,
+Keeta Customer Service Center `, 
+      ar: ` عميل كيتا العزيز،
+
+نشكرك على ملاحظاتك، ونأسف بشدة لسماع تجربتك.
+
+بعد مراجعة تفاصيل طلبك، وجدنا أنه لم تتم إضافة أي تعليمات أو ملاحظات خاصة عند تقديم الطلب. ونتيجةً لذلك، قام المطعم بإعداد الوجبة وفقًا للإجراءات المتبعة.
+
+نتفهم قلقك، وسنواصل مشاركة ملاحظاتك مع المطعم لتحسين الخدمة مستقبلًا. نأمل أن نخدمك بشكل أفضل في تجربتك القادمة.
+
+شكرًا لاختيارك كيتا.
+
+مع خالص التحيات،
+مركز خدمة عملاء كيتا ` },
+      food_apologize: { en: ` Dear Keeta Customer,
+
+Thank you for choosing Keeta.
+
+We appreciate you bringing to our attention that the special instructions for your recent order were not followed. We sincerely apologize for any inconvenience caused. 
+
+We have forwarded your feedback to the relevant restaurant and emphasized the importance of adhering to customer requests so that it doesn't have an impact on the experience. 
+
+We take such feedback seriously, which helps us to identify areas of improvement, and we look forward to providing you with a pleasant experience next time.
+
+Sincerely,
+
+Keeta Customer Service Center `, 
+      ar: `عميل كيتا العزيز،
+
+شكرًا لاختيارك كيتا.
+
+نشكرك على لفت انتباهنا إلى عدم اتباع التعليمات الخاصة بطلبك الأخير. نعتذر بشدة عن أي إزعاج قد يكون سببه ذلك.
+
+لقد أرسلنا ملاحظاتك إلى المطعم المعني، وشددنا على أهمية الالتزام بطلبات العملاء حتى لا تؤثر على تجربة الاستخدام.
+
+نأخذ هذه الملاحظات على محمل الجد، مما يساعدنا على تحديد جوانب التحسين، ونتطلع إلى تقديم تجربة ممتعة لك في المرة القادمة.
+
+مع خالص التقدير،
+
+مركز خدمة عملاء كيتا  ` },
+      courier_apology: { en: `Dear Keeta Customer,
+
+We understand your concern regarding the delay in receiving your order, and we sincerely apologize for any inconvenience this has caused. 
+
+We also want to remind you that Keeta is committed to providing the best possible experience, which includes our on-time delivery guarantee. 
+
+To qualify for the on-time guarantee, the following two conditions must be met:
+
+The order must be completed; compensation is not provided for incomplete orders.
+
+The actual delivery time must exceed the estimated delivery time (ETA) by more than 15 minutes.
+
+Thank you again for your valuable feedback.
+
+We hope to continue serving you and trust that you will keep supporting Keeta.
+
+Thank you for contacting Keeta Customer Service.
+
+Sincerely,
+
+Keeta Customer Service Center  `, 
+      ar: ` عميل كيتا العزيز،
+
+نتفهم قلقكم بشأن تأخر استلام طلبكم، ونعتذر بشدة عن أي إزعاج قد يسببه ذلك.
+
+كما نود تذكيركم بأن كيتا ملتزمة بتقديم أفضل تجربة ممكنة، بما في ذلك ضمان التوصيل في الموعد المحدد.
+
+للحصول على ضمان التوصيل في الموعد المحدد، يجب استيفاء الشرطين التاليين:
+
+يجب إكمال الطلب؛ لا يُقدم تعويض عن الطلبات غير المكتملة.
+
+يجب أن يتجاوز وقت التوصيل الفعلي وقت التوصيل المتوقع بأكثر من 15 دقيقة.
+
+شكرًا جزيلاً لملاحظاتكم القيّمة.
+
+نأمل أن نستمر في خدمتكم ونثق بأنكم ستواصلون دعم كيتا.
+
+شكرًا لتواصلكم مع خدمة عملاء كيتا.
+
+مع خالص التحيات،
+
+مركز خدمة عملاء كيتا ` },
+      courier_can: { en: ` Dear Keeta Customer,
+
+Thank you for choosing Keeta.
+
+We absolutely understand your concern regarding the delay in the delivery of your order, and we sincerely apologize for any inconvenience this is causing. Please know that we are actively addressing this situation.
+
+We have been in direct contact with the the courier, and we want to assure you that they are currently en-route to your location. We kindly request your continued patience as they complete the delivery. 
+
+We also want to remind you that Keeta is committed to providing the best possible experience, which includes our on-time delivery guarantee. 
+
+Compensation is provided for orders that meet the delay conditions.
+
+To qualify for the on-time guarantee, the following two conditions must be met:
+
+1.   The order must be completed; compensation is not provided for incomplete orders.
+
+2.   The actual delivery time must exceed the estimated delivery time (ETA) by more than 15 minutes.
+
+Thank you for your understanding as we work to get your order to you as quickly as possible. We truly appreciate your patience. 
+
+Sincerely, 
+
+Keeta Customer Service Center `, 
+      ar: ` عميل كيتا العزيز،
+
+شكرًا لاختيارك كيتا.
+
+نتفهم تمامًا قلقك بشأن تأخير توصيل طلبك، ونعتذر بصدق عن أي إزعاج قد يسببه ذلك. يرجى العلم أننا نعمل جاهدين على حل هذه المشكلة.
+
+لقد تواصلنا مباشرةً مع شركة الشحن، ونؤكد لكم أنها في طريقها إلى عنوانكم. نرجو منكم التحلي بالصبر أثناء إتمام عملية التوصيل.
+
+كما نذكركم بأن كيتا ملتزمة بتقديم أفضل تجربة ممكنة، بما في ذلك ضمان التوصيل في الموعد المحدد.
+
+يتم تقديم تعويض للطلبات التي تستوفي شروط التأخير.
+
+للحصول على ضمان التوصيل في الموعد المحدد، يجب استيفاء الشرطين التاليين:
+
+1. يجب إكمال الطلب؛ ولا يتم تقديم تعويض للطلبات غير المكتملة.
+
+2. يجب أن يتجاوز وقت التوصيل الفعلي وقت التوصيل المتوقع بأكثر من 15 دقيقة.
+
+نشكركم على تفهمكم، ونسعى جاهدين لتوصيل طلبكم إليكم في أسرع وقت ممكن. نقدر صبركم.
+
+مع خالص التحيات،
+
+مركز خدمة عملاء كيتا ` },
+      courier_cant: { en: ` Dear Keeta Customer,
+
+Thank you for choosing Keeta.
+
+We understand your concern regarding the delay in the delivery of your order, and we sincerely apologize for any inconvenience this is causing. Please know that we are actively addressing this situation.
+
+Sorry for the inconvenience. Due to（...）， the order can't be delivered. We will refund (.......)   for your order immediately and apply a total of  XX  compensation for you to express our apology.
+
+Thank you for your understanding as we work to get your order to you as quickly as possible. We truly appreciate your patience. 
+
+Sincerely, 
+
+Keeta Customer Service Center `, 
+      ar: ` عميل كيتا العزيز،
+
+شكرًا لاختيارك كيتا.
+
+نتفهم قلقك بشأن تأخير توصيل طلبك، ونعتذر بشدة عن أي إزعاج قد يسببه ذلك. يرجى العلم أننا نعمل جاهدين على حل هذه المشكلة.
+
+نأسف للإزعاج. بسبب (...)، لا يمكن توصيل الطلب. سنقوم برد (.......) قيمة طلبك فورًا، وسنقدم لك تعويضًا إجماليًا قدره XX كتعويض عن اعتذارنا.
+
+نشكرك على تفهمك، فنحن نعمل جاهدين لتوصيل طلبك إليك في أسرع وقت ممكن. نقدر صبركم.
+
+مع خالص التقدير،
+
+مركز خدمة عملاء كيتا ` },
+Solution_24: { en: `Dear Keeta Customer,
+
+We sincerely appreciate you taking the time to share your feedback with Keeta. Your insights are vital in helping us enhance our services.
+
+To ensure we address your concerns comprehensively, we requested further details from you 24 hours ago. Regrettably, as we have not yet received a response, ‌we shall pause this case temporarily‌ to maintain efficient service delivery for all users.  
+
+Should your query still require attention, we warmly encourage you to re-engage with us at your earliest convenience. Our commitment to resolving your matter remains unwavering.
+
+With best regards,
+
+Keeta Customer Service Center`, 
+      ar: ` عزيز عميل كيتا ،
+
+نحن نقدر حقًا أنك خصصت وقتًا لمشاركة ملاحظاتك مع كيتا. إن رؤيتك ضرورية لمساعدتنا على تحسين خدماتنا.
+
+لضمان معالجة مخاوفك بشكل شامل، طلبنا منك تفاصيل إضافية منذ 24 ساعة. وللأسف، نظرًا لأننا لم نتلقَ ردًا حتى الآن، ‌سنقوم بإيقاف هذه الحالة مؤقتًا‌ للحفاظ على تقديم خدمة فعالة لجميع المستخدمين.
+
+إذا كان استفسارك لا يزال يحتاج إلى متابعة، نشجعك بشدة على التواصل معنا في أقرب وقت يناسبك. يظل التزامنا بحل مشكلتك ثابتًا دون تغيير.
+
+مع أطيب التحيات،
+مركز خدمة عملاء كيتا ` },
+Solution_S: { en: `Dear Keeta Customer,
+
+Thank you for choosing Keeta. We appreciate your feedback regarding the issue you reported concerning [briefly describe the issue] (order number: XXX).
+
+We truly appreciate your patience as we thoroughly investigated and verified the matter. After completing our review, we have determined the best course of action: [outline the solution].
+
+
+Thank you once again for your valuable input. We hope to continue serving you and trust you will keep supporting Keeta.
+
+Wishing you a wonderful day ahead.
+
+Best regards,  
+Keeta Customer Service Center`, 
+      ar: ` عزيز عميل كيتا ،
+
+شكرًا لاختيارك كيتا. نقدر ملاحظاتك بخصوص المشكلة التي أبلغت عنها المتعلقة بـ [قم بوصف المشكلة باختصار] (رقم الطلب: XXX).
+
+نحن ممتنون جدًا لصبرك حيث قمنا بالتحقيق في الأمر والتحقق منه بعناية. بعد استكمال المراجعة، توصلنا إلى الحل الأنسب: [اذكر الحل].
+
+شكرًا مرة أخرى على ملاحظاتك القيمة. نأمل أن نستمر في خدمتك ونتطلع إلى دعمك المستمر لكيتا.
+
+نتمنى لك يومًا سعيدًا. 
+
+مع أطيب التحيات،
+مركز خدمة عملاء كيتا ` },
+    };
+
+    let currentScript = null;
+    let currentLang = "en";
+
+    function showScript(key) {
+      currentScript = key;
+      const scriptBox = document.getElementById("scriptBox");
+      scriptBox.innerText = scripts[key][currentLang];
+      if (currentLang === "ar") {
+        scriptBox.setAttribute("dir","rtl");
+        scriptBox.style.textAlign = "right";
+      } else {
+        scriptBox.setAttribute("dir","ltr");
+        scriptBox.style.textAlign = "left";
+      }
+    }
+
+    function toggleLang() {
+      if (!currentScript) return;
+      currentLang = currentLang === "en" ? "ar" : "en";
+      showScript(currentScript);
+    }
+
+    function copyText() {
+      const scriptBox = document.getElementById("scriptBox");
+      let textToCopy = scriptBox.innerHTML;
+      if (/[\u0600-\u06FF]/.test(scriptBox.innerText)) {
+        textToCopy = `<div dir="rtl">${textToCopy}</div>`;
+      }
+      navigator.clipboard.write([
+        new ClipboardItem({
+          "text/html": new Blob([textToCopy], { type: "text/html" }),
+          "text/plain": new Blob([scriptBox.innerText], { type: "text/plain" })
+        })
+      ])
+      .then(() => alert("تم النسخ بنجاح ✅"))
+      .catch(err => console.error("فشل النسخ:", err));
+    }
+
+    function copyEmail() {
+      navigator.clipboard.writeText("delaycase.qat@keetainc.com")
+        .then(() => alert("Email copied! delaycase.qat@keetainc.com"));
+    }
+  </script>
+</body>
+</html>
