@@ -141,8 +141,10 @@
     <div class="content">
       <div class="buttons">
         <button onclick="toggleLang()">EN / AR</button>
-        <button onclick="copyText()">Copy</button>
-        <button onclick="copyEmail()">Copy Email</button>
+        <button onclick="copyText()">Copy Temp</button>
+        <button onclick="copyEmail()">Copy Email QAT</button>
+        <button onclick="copyEmail2()">Copy Email UAE</button>
+
       </div>
       <div id="scriptBox" class="script-box">
         👈 Please select a template from the left menu.
@@ -1038,6 +1040,10 @@ Keeta Customer Service Center`,
     function copyEmail() {
       navigator.clipboard.writeText("delaycase.qat@keetainc.com")
         .then(() => alert("Email copied! delaycase.qat@keetainc.com"));
+    }
+    function copyEmail2() {
+      navigator.clipboard.writeText("delaycase.uae@keetainc.com")
+        .then(() => alert("Email copied! delaycase.uae@keetainc.com"));
     }
   </script>
 </body>
